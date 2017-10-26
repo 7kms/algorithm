@@ -4,6 +4,7 @@ class Graph {
         this.edges = 0;
         this.adj = [];
         this.marked = [];
+        this.edgeTo = [];
         for(let i = 0; i< v; i ++){
             this.adj[i] = [];
             this.marked[i] = false;
@@ -35,6 +36,7 @@ class Graph {
      * @param {*number} v 
      */
     dfs(v){
+        this.clearMark();
         this.marked[v] = true;
         console.log("Visited vertex:  " + v);
         for(let i = 0; i < this.adj[v].length; i++){
@@ -51,6 +53,7 @@ class Graph {
      * @param {*number} v 
      */
     fbs(s){
+        this.clearMark();
         let queue = [];
         queue.push(s);
         this.marked[s] = true;
@@ -62,10 +65,26 @@ class Graph {
                let w =  this.adj[v][i];
                 if(!this.marked[w]){
                     queue.push(w);
+                    this.edgeTo[w] = v;
                     this.marked[w] = true;
                 }
             }
         }
+    }
+    pathTo(v){
+        let source = 0;
+        if(!this.marked[v]){
+            //如果没有被mark的点,说明邻接表里面没有路径可以通向这个点
+            return undefined;
+        }
+        let path = [v]; 
+        let i = this.edgeTo[v];
+        while(i != source){
+            path.push(i);
+            i = this.edgeTo[i];
+        }
+        path.push(source);
+        return path.reverse();
     }
 }
 module.exports = Graph;
