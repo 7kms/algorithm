@@ -1,8 +1,11 @@
 {
+   
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 7,
         "sourceType": "module",
         "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "experimentalDecorators": true,
             "impliedStrict": true,
             "jsx": true
         }
