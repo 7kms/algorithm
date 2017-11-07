@@ -16,18 +16,20 @@ let generateRandomArr = (len) => {
  * 对于一件物品必须选择(用1表示)或者不选择(用0表示),且每件物品只能被选取一次(这就是0-1的含义)
  * 
  * 求放置哪些物品进背包,可以使得这些物品的总量和不超过背包的容量,并且还能使得背包中的物品价值最大
- * 
- * W[i]
+ * 一般地,当背包容量为j,当前物品的位置为i
+ *  f[i,j] = Max{ f[i-1,j-Wi] + Vi( j >= Wi ),  f[i-1,j] }
  * 
  */
 
 
 
 /**
+ * 0-1背包问题: 递归方式实现
  * @param {Array} weightArr 物品质量
  * @param {Array} valueArr 物品价值
  * @param {Number} c 背包容量
  * 
+ * 返回值是背包和物品都确定的情况下,背包能容纳的最大价值
  */
 const recursion = (weightArr,valueArr,c,n)=>{
     
@@ -54,6 +56,8 @@ const recursion = (weightArr,valueArr,c,n)=>{
  * @param {Array} weightArr 物品质量
  * @param {Array} valueArr 物品价值
  * @param {Number} c 背包容量
+ * 
+ * 输出背包和物品都确定的情况下,背包能容纳的最大价值
  */
 const baggage = (weightArr,valueArr,c)=>{
     
