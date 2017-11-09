@@ -1,3 +1,8 @@
+//动态规划包含三个重要概念
+//1.最优子结构
+//2.边界
+//3.状态转移公式
+
 let generateRandomArr = (len) => {
     const base = 10;
     let arr = [];
@@ -19,6 +24,16 @@ let generateRandomArr = (len) => {
  * 一般地,当背包容量为j,当前物品的位置为i
  *  f[i,j] = Max{ f[i-1,j-Wi] + Vi( j >= Wi ),  f[i-1,j] }
  * 
+ * 
+ * 1.最优子结构  Max{ f[i-1,j-Wi] + Vi( j >= Wi ),  f[i-1,j] }
+ * 2.边界
+ *  当i=1的时候 只有i可以选择
+ *  f[1,j] = V[i] (W[i] <= j)
+ *  f[1,j] = 0 (W[i] > j)
+ * 3.状态转移公式
+ *  f[i,j] = 0; (i<=1,j<=Wi)
+ *  f[i,j] = f[i-1,j]; (i>1,j<Wi)
+ *  f[i,j] = Max{ f[i-1,j-Wi] + Vi,  f[i-1,j] } ( i>1,j >= Wi )
  */
 
 
