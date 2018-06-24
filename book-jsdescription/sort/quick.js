@@ -58,23 +58,50 @@ let quickSort2 = function(arr, start, end){
     // return quickSort2(arr,);
 }
 
+
+
+var st = function(arr,start,end){
+    if(arguments.length == 1){
+        start = 0;
+        end = arr.length - 1;
+    }
+    if(start >= end || arr.length < 2) return;
+
+    let pivot = start;
+    let i = start;
+    let j = end;
+    while(i < j){
+        while(j > pivot){
+            if(arr[j] < arr[pivot]){
+                swap(arr,j,pivot)
+                pivot = j
+            }
+            j--
+        }
+        while(i < pivot){
+            if(arr[i] > arr[pivot]){
+                swap(arr,i,pivot)
+                pivot = i
+            }
+            i++
+        }
+    }
+    st(arr,start,pivot-1)
+    st(arr,pivot+1,end)
+    
+}
+
 let test = ()=>{
-    let arr = generateRandomArr(1000000);
-    // console.log('origin arr ', arr.toString());
+   
+    let arr = generateRandomArr(100);
+    console.log('origin arr ', arr.toString());
     // let finallyArr = quickSort(arr);
-    quickSort2(arr);
-    // console.log('finally arr',arr.toString());
+    st(arr);
+    
+    console.log('finally arr',arr.toString());
 }
 
 test()
 
 
-let test2 = ()=>{
-    let arr = [1,2,3];
-    let i = 0;
-    for(; i< arr.length; i ++){
-        break;
-    }
-    console.log(i)
-}
-// test2();
+

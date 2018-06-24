@@ -17,10 +17,15 @@ let insertionSort = ()=>{
         let tmp = arr[j];
         console.log('circulate times %d', ++times);
         while(j > 0 && (arr[j-1] > tmp)){
+            console.log('move element %d to %d',arr[j-1], arr[j])
             arr[j] = arr[j-1];
+            console.log(arr)
             j--;
         }
         arr[j] = tmp;
+        console.log('after move')
+        console.log(arr)
+        
     }
     console.log('final arr is', arr)
 }
