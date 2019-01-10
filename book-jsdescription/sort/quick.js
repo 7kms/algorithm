@@ -91,17 +91,47 @@ var st = function(arr,start,end){
     
 }
 
+const quickSort3 = function(arr,start,end){
+    if(arguments.length == 1){
+        start = 0;
+        end = arr.length - 1;
+    }
+    if(start >= end || arr.length < 2) return;
+
+    let pivot = start;
+    let i = start;
+    let j = end;
+    while(i < j){
+        while(i<pivot){
+            if(arr[i]>arr[pivot]){
+                swap(arr,i,pivot);
+                pivot = i;
+            }
+            i++;
+        }
+        while(j>pivot){
+            if(arr[j] < arr[pivot]){
+                swap(arr,j,pivot);
+                pivot = j;
+            }
+            j--;
+        }
+    }
+    quickSort3(arr,start,pivot-1)
+    quickSort3(arr,pivot+1,end)
+}
+
+
 let test = ()=>{
    
     let arr = generateRandomArr(100);
     console.log('origin arr ', arr.toString());
     // let finallyArr = quickSort(arr);
-    st(arr);
+    quickSort3(arr);
     
     console.log('finally arr',arr.toString());
 }
 
 test()
-
 
 
