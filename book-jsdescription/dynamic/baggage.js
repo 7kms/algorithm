@@ -22,10 +22,10 @@ let generateRandomArr = (len) => {
  * 
  * 求放置哪些物品进背包,可以使得这些物品的总量和不超过背包的容量,并且还能使得背包中的物品价值最大
  * 一般地,当背包容量为j,当前物品的位置为i
- *  f[i,j] = Max{ f[i-1,j-Wi] + Vi( j >= Wi ),  f[i-1,j] }
+ *  f[i,j] = Max{ f[i-1,j-Wi] + V[i]( j >= Wi ),  f[i-1,j] }
  * 
  * 
- * 1.最优子结构  Max{ f[i-1,j-Wi] + Vi( j >= Wi ),  f[i-1,j] }
+ * 1.最优子结构  Max{ f[i-1,j-Wi] + V[i]( j >= Wi ),  f[i-1,j] }
  * 2.边界
  *  当i=1的时候 只有i可以选择
  *  f[1,j] = V[i] (W[i] <= j)
